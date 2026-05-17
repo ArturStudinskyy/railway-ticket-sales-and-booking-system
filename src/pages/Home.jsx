@@ -10,10 +10,23 @@ function Home() {
         setSearchTerm(event.target.value);
     };
 
+    const normalizedSearchTerm = searchTerm.toLowerCase();
+    const filteredTrains = trains.filter((train) => {
+        return (
+            train.number.toLowerCase().includes(normalizedSearchTerm) ||
+            train.routeFrom.toLowerCase().includes(normalizedSearchTerm) ||
+            train.routeTo.toLowerCase().includes(normalizedSearchTerm)
+        );
+    });
+
     return (
         <div>
             <input type="text" value={searchTerm} onChange={handleSearchChange} />
-            <TrainList trains={trains} />
+            {filteredTrains.length === 0 ? (
+                <p>Рейсів не знайдено</p>
+            ) : (
+                <TrainList trains={filteredTrains} />
+            )}
         </div>
     );
 }
