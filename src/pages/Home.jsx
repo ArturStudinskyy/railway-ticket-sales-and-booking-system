@@ -20,10 +20,16 @@ function Home() {
     });
 
     return (
-        <div>
-            <input type="text" value={searchTerm} onChange={handleSearchChange} />
+        <div className="home">
+            <input
+                type="text"
+                value={searchTerm}
+                onChange={handleSearchChange}
+                placeholder="Пошук за номером або містом"
+                className="search-input"
+            />
             {filteredTrains.length === 0 ? (
-                <p>Рейсів не знайдено</p>
+                <p className="empty-state">Рейсів не знайдено</p>
             ) : (
                 <TrainList trains={filteredTrains} />
             )}
