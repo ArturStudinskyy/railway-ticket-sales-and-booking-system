@@ -1,0 +1,3 @@
+const BookingService = {};
+
+export { BookingService };
