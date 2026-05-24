@@ -1,0 +1,25 @@
+.wagonSelector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.wagonButton {
+    border: none;
+    border-radius: 999px;
+    padding: 10px 16px;
+    background: var(--accent);
+    color: #f2fff9;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.wagonButton:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.wagonButton[aria-pressed="true"] {
+    box-shadow: 0 0 0 3px rgba(13, 110, 87, 0.35);
+}

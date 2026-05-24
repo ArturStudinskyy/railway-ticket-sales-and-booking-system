@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 import BookingForm from "../components/BookingForm";
 import SeatMap from "../components/SeatMap";
 import WagonSelector from "../components/WagonSelector";
 import { BookingService } from "../services/BookingService";
+import styles from "./BookingPage.module.css";
 
 const SEAT_COUNT = 24;
 const FORM_STORAGE_KEY = "bookingFormData";
@@ -47,16 +49,18 @@ function BookingPage() {
         });
 
         setSelectedSeatIds([]);
-        alert("Бронювання успішно оформлено!");
+        toast.success("Бронювання успішно оформлено!");
+
+        return true;
     };
 
     return (
-        <div className="booking-page">
-            <div className="booking-page__header">
+        <div className={styles.bookingPage}>
+            <div className={styles.bookingPageHeader}>
                 <h3>Сторінка бронювання</h3>
                 <p>Оберіть вагон і потрібні місця, а потім підтвердіть бронювання.</p>
             </div>
-            <section className="booking-card">
+            <section className={styles.bookingCard}>
                 <h4>Вибір вагона</h4>
                 <WagonSelector
                     wagons={wagons}
@@ -64,7 +68,7 @@ function BookingPage() {
                     onSelectWagon={setActiveWagon}
                 />
             </section>
-            <section className="booking-card">
+            <section className={styles.bookingCard}>
                 <h4>Схема місць (вагон {activeWagon})</h4>
                 <SeatMap
                     seats={seats}
@@ -72,7 +76,7 @@ function BookingPage() {
                     onSeatClick={handleSeatClick}
                 />
             </section>
-            <section className="booking-card">
+            <section className={styles.bookingCard}>
                 <h4>Дані пасажира</h4>
                 <BookingForm onSubmit={handleSubmit} />
             </section>

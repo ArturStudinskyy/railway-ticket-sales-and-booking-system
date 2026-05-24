@@ -1,0 +1,22 @@
+.bookingPage {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.bookingPageHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.bookingCard {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

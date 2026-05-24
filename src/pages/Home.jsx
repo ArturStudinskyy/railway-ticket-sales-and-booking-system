@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import TrainList from "../components/TrainList";
 import { trains } from "../data/trains";
+import styles from "./Home.module.css";
 
 function Home() {
     const [searchTerm, setSearchTerm] = useState("");
@@ -20,16 +21,16 @@ function Home() {
     });
 
     return (
-        <div className="home">
+        <div className={styles.home}>
             <input
                 type="text"
                 value={searchTerm}
                 onChange={handleSearchChange}
                 placeholder="Пошук за номером або містом"
-                className="search-input"
+                className={styles.searchInput}
             />
             {filteredTrains.length === 0 ? (
-                <p className="empty-state">Рейсів не знайдено</p>
+                <p className={styles.emptyState}>Рейсів не знайдено</p>
             ) : (
                 <TrainList trains={filteredTrains} />
             )}

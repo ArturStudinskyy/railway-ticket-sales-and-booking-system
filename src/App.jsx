@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 import Home from "./pages/Home";
 import BookingPage from "./pages/BookingPage";
-import "./App.css";
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/booking/:trainId" element={<BookingPage />} />
       </Routes>
+      <ToastContainer position="top-right" autoClose={3000} theme="dark" />
     </BrowserRouter>
   );
 }

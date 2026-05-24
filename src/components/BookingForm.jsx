@@ -1,11 +1,15 @@
 import { useState } from "react";
 
+import styles from "./BookingForm.module.css";
+
+const initialValues = {
+    name: "",
+    phone: "",
+    email: "",
+};
+
 const BookingForm = ({ onSubmit }) => {
-    const [values, setValues] = useState({
-        name: "",
-        phone: "",
-        email: "",
-    });
+    const [values, setValues] = useState(initialValues);
     const [errors, setErrors] = useState({});
 
     const validate = () => {
@@ -39,14 +43,21 @@ const BookingForm = ({ onSubmit }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (validate() && onSubmit) {
-            onSubmit(values);
+        if (!validate()) {
+            return;
+        }
+
+        const result = onSubmit ? onSubmit(values) : true;
+
+        if (result !== false) {
+            setValues(initialValues);
+            setErrors({});
         }
     };
 
     return (
-        <form className="booking-form" onSubmit={handleSubmit}>
-            <div className="form-field">
+        <form className={styles.bookingForm} onSubmit={handleSubmit}>
+            <div className={styles.formField}>
                 <label htmlFor="booking-name">Ім'я</label>
                 <input
                     id="booking-name"
@@ -56,12 +67,12 @@ const BookingForm = ({ onSubmit }) => {
                     onChange={handleChange}
                 />
                 {errors.name && (
-                    <div className="form-error" role="alert">
+                    <div className={styles.formError} role="alert">
                         {errors.name}
                     </div>
                 )}
             </div>
-            <div className="form-field">
+            <div className={styles.formField}>
                 <label htmlFor="booking-phone">Телефон</label>
                 <input
                     id="booking-phone"
@@ -71,12 +82,12 @@ const BookingForm = ({ onSubmit }) => {
                     onChange={handleChange}
                 />
                 {errors.phone && (
-                    <div className="form-error" role="alert">
+                    <div className={styles.formError} role="alert">
                         {errors.phone}
                     </div>
                 )}
             </div>
-            <div className="form-field">
+            <div className={styles.formField}>
                 <label htmlFor="booking-email">Email</label>
                 <input
                     id="booking-email"
@@ -86,12 +97,12 @@ const BookingForm = ({ onSubmit }) => {
                     onChange={handleChange}
                 />
                 {errors.email && (
-                    <div className="form-error" role="alert">
+                    <div className={styles.formError} role="alert">
                         {errors.email}
                     </div>
                 )}
             </div>
-            <button className="submit-button" type="submit">
+            <button className={styles.submitButton} type="submit">
                 Підтвердити бронювання
             </button>
         </form>

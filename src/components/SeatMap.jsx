@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import styles from "./SeatMap.module.css";
+
 const SeatMap = ({ seats, onSeatClick, selectedSeatIds: controlledSelected }) => {
     const [internalSelected, setInternalSelected] = useState([]);
     const selectedSeatIds = controlledSelected ?? internalSelected;
@@ -23,17 +25,16 @@ const SeatMap = ({ seats, onSeatClick, selectedSeatIds: controlledSelected }) =>
     };
 
     return (
-        <div className="seat-map">
+        <div className={styles.seatMap}>
             {seats.map((seat) => {
                 const isBooked = seat.status === "booked";
                 const isSelected = selectedSeatIds.includes(seat.id);
-                const seatClasses = [
-                    "seat",
-                    `seat--${seat.status}`,
-                    isSelected ? "seat--selected" : "",
-                ]
-                    .filter(Boolean)
-                    .join(" ");
+                const statusClass = isSelected
+                    ? styles.seatSelected
+                    : isBooked
+                        ? styles.seatBooked
+                        : styles.seatFree;
+                const seatClasses = [styles.seat, statusClass].join(" ");
 
                 return (
                     <button

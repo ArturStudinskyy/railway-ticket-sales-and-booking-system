@@ -1,0 +1,35 @@
+.seatMap {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+    gap: 8px;
+}
+
+.seat {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 0;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+}
+
+.seat:disabled {
+    cursor: not-allowed;
+    opacity: 0.85;
+}
+
+.seatFree {
+    background: #059669;
+    color: #eafff6;
+    cursor: pointer;
+}
+
+.seatSelected {
+    background: #2563eb;
+    color: #eef3ff;
+    cursor: pointer;
+}
+
+.seatBooked {
+    background: #dc2626;
+    color: #ffe7e7;
+}
