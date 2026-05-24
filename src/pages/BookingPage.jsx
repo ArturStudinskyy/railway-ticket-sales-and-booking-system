@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { useParams } from "react-router-dom";
 
 import BookingForm from "../components/BookingForm";
 import SeatMap from "../components/SeatMap";
@@ -20,12 +21,18 @@ const createSeats = (bookedSeatIds) =>
     });
 
 function BookingPage() {
+    const { trainId } = useParams();
     const wagons = [1, 2, 3];
     const [activeWagon, setActiveWagon] = useState(wagons[0]);
     const [seats, setSeats] = useState(() =>
-        createSeats(BookingService.getBookedSeats())
+        createSeats(BookingService.getBookedSeats(trainId, wagons[0]))
     );
     const [selectedSeatIds, setSelectedSeatIds] = useState([]);
+
+    useEffect(() => {
+        setSeats(createSeats(BookingService.getBookedSeats(trainId, activeWagon)));
+        setSelectedSeatIds([]);
+    }, [trainId, activeWagon]);
 
     const handleSeatClick = (nextSelected) => {
         setSelectedSeatIds(nextSelected);
@@ -44,7 +51,7 @@ function BookingPage() {
                 .filter((seat) => seat.status === "booked")
                 .map((seat) => seat.id);
 
-            BookingService.saveBookedSeats(bookedSeatIds);
+            BookingService.saveBookedSeats(trainId, activeWagon, bookedSeatIds);
             return nextSeats;
         });
 
