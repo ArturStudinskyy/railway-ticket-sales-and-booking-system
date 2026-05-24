@@ -80,3 +80,136 @@
   border: 1px dashed var(--border);
   background: var(--surface);
 }
+
+.booking-page {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.booking-page__header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.booking-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wagon-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.wagon-button {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: #f2fff9;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.wagon-button:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.wagon-button[aria-pressed="true"] {
+  box-shadow: 0 0 0 3px rgba(13, 110, 87, 0.35);
+}
+
+.seat-map {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+  gap: 8px;
+}
+
+.seat {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 0;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.seat:disabled {
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+.seat--free {
+  background: #059669;
+  color: #eafff6;
+  cursor: pointer;
+}
+
+.seat--selected {
+  background: #2563eb;
+  color: #eef3ff;
+  cursor: pointer;
+}
+
+.seat--booked {
+  background: #dc2626;
+  color: #ffe7e7;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field input {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  color: var(--text);
+}
+
+.form-field input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(13, 110, 87, 0.35);
+}
+
+.form-error {
+  color: #ffb4b4;
+  font-size: 0.9rem;
+}
+
+.submit-button {
+  align-self: flex-start;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  background: var(--accent);
+  color: #f2fff9;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.submit-button:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}

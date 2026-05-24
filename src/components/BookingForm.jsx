@@ -45,8 +45,8 @@ const BookingForm = ({ onSubmit }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
+        <form className="booking-form" onSubmit={handleSubmit}>
+            <div className="form-field">
                 <label htmlFor="booking-name">Ім'я</label>
                 <input
                     id="booking-name"
@@ -55,9 +55,13 @@ const BookingForm = ({ onSubmit }) => {
                     value={values.name}
                     onChange={handleChange}
                 />
-                {errors.name && <div role="alert">{errors.name}</div>}
+                {errors.name && (
+                    <div className="form-error" role="alert">
+                        {errors.name}
+                    </div>
+                )}
             </div>
-            <div>
+            <div className="form-field">
                 <label htmlFor="booking-phone">Телефон</label>
                 <input
                     id="booking-phone"
@@ -66,9 +70,13 @@ const BookingForm = ({ onSubmit }) => {
                     value={values.phone}
                     onChange={handleChange}
                 />
-                {errors.phone && <div role="alert">{errors.phone}</div>}
+                {errors.phone && (
+                    <div className="form-error" role="alert">
+                        {errors.phone}
+                    </div>
+                )}
             </div>
-            <div>
+            <div className="form-field">
                 <label htmlFor="booking-email">Email</label>
                 <input
                     id="booking-email"
@@ -77,9 +85,15 @@ const BookingForm = ({ onSubmit }) => {
                     value={values.email}
                     onChange={handleChange}
                 />
-                {errors.email && <div role="alert">{errors.email}</div>}
+                {errors.email && (
+                    <div className="form-error" role="alert">
+                        {errors.email}
+                    </div>
+                )}
             </div>
-            <button type="submit">Підтвердити бронювання</button>
+            <button className="submit-button" type="submit">
+                Підтвердити бронювання
+            </button>
         </form>
     );
 };
